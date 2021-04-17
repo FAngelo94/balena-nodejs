@@ -1,20 +1,7 @@
 version: '3'
 
 services:
-  ubuntu-server:
-    build: 'server/'
-    container_name: 'ubuntu-server'
-    restart: unless-stopped
-    ports:
-    - 3000:3000
-    networks:
-      frigo-net:
-    links: 
-      - db:db
-    volumes: 
-      - C:\Users\FAngelo94\Desktop\Angelo\Progetto\FrescoFrigo\balena-nodejs\server:/usr/src/app
-    command: bash -c "npm i && npm run start"
-  
+
   db:
     image: mysql:8.0
     ports: 
@@ -47,6 +34,20 @@ services:
     networks:
       frigo-net:
       
+  ubuntu-server:
+    build: 'server/'
+    container_name: 'ubuntu-server'
+    restart: unless-stopped
+    ports:
+    - 3000:3000
+    networks:
+      frigo-net:
+    links: 
+      - db:db
+    volumes: 
+      - C:\Users\FAngelo94\Desktop\Angelo\Progetto\FrescoFrigo\balena-nodejs\server:/usr/src/app
+    command: bash -c "npm i && npm run start"
+  
 volumes:
   persistent:
 
