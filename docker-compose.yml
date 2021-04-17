@@ -1,0 +1,55 @@
+version: '3'
+
+services:
+  ubuntu-server:
+    build: 'server/'
+    container_name: 'ubuntu-server'
+    restart: unless-stopped
+    ports:
+    - 3000:3000
+    networks:
+      frigo-net:
+    links: 
+      - db:db
+    volumes: 
+      - C:\Users\FAngelo94\Desktop\Angelo\Progetto\FrescoFrigo\balena-nodejs\server:/usr/src/app
+    command: bash -c "npm i && npm run start"
+  
+  db:
+    image: mysql:8.0
+    ports: 
+        - "3306:3306"
+    security_opt:
+      - seccomp:unconfined
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+        MYSQL_DATABASE: my_database
+        MYSQL_USER: user
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test 
+    volumes:
+        - ./dump:/docker-entrypoint-initdb.d
+        - ./conf:/etc/mysql/conf.d
+        - ./persistent:/var/lib/mysql
+    networks:
+      frigo-net:
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links: 
+        - db:db
+    ports:
+        - 8000:80
+    environment:
+        MYSQL_USER: user
+        MYSQL_PASSWORD: test
+        MYSQL_ROOT_PASSWORD: test 
+    networks:
+      frigo-net:
+      
+volumes:
+  persistent:
+
+networks:
+  frigo-net:
+    

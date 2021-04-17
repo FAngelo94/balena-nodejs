@@ -7,5 +7,6 @@ docker run -it --name balenanode -p 3000:3000 -v C:\Users\FAngelo94\Desktop\Ange
 * https://hub.docker.com/r/samibourouis/balena-cli
 * https://hub.docker.com/r/balenalib/bananapi-m1-plus-alpine-node
 * https://codeshack.io/basic-login-system-nodejs-express-mysql/
+* https://www.scalyr.com/blog/create-docker-image/
 
 docker run -it --name ubuntu -p 3000:3000 -v C:\Users\FAngelo94\Desktop\Angelo\Progetto\FrescoFrigo:/usr/src/app ubuntu /bin/bash
