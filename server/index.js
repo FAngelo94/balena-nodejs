@@ -20,7 +20,7 @@ app.use(session({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: 'db',
   port: 3306,
   user: 'user',
@@ -38,10 +38,20 @@ const renderAppPage = (req, res, { username = "", message = "", apps = "", logs 
   res.render('app.html', { username: req.session.username, message, apps, logs });
 }
 
+const createTable = () => {
+  connection.query("CREATE TABLE IF NOT EXISTS Log (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(32), action VARCHAR(16))", function (error, results, fields) {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+  });
+}
+
 /**
  * Home page route
  */
 app.get('/', (req, res) => {
+  createTable()
   if (req.session.loggedin) {
     renderAppPage(req, res, { message: "You are already logged, press to see apps list" });
   } else {
@@ -114,11 +124,5 @@ app.get('/readdb', (req, res) => {
  * Function that start the server
  */
 app.listen(port, () => {
-  connection.query("CREATE TABLE IF NOT EXISTS Log (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(32), action VARCHAR(16))", function (error, results, fields) {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-  });
   console.log(`Example app listening at http://localhost:${port}`)
 })
