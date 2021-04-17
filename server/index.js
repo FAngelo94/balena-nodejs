@@ -119,10 +119,6 @@ app.listen(port, () => {
       console.log(`error: ${error.message}`);
       return;
     }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
   });
   console.log(`Example app listening at http://localhost:${port}`)
 })
