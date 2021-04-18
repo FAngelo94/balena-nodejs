@@ -31,6 +31,10 @@ Basic docker image with inside phpmyadmin. We can use the phpmyadmin dashboard t
 
 ![alt structure](https://github.com/FAngelo94/balena-nodejs/blob/master/structure_app.png)
 
+## How it works
+
+User can login to balena, then he can ask the list of application added in balena. Every time user asks list of apps a new row is saved in the db. Finally he can read the list of rows added in db with the last button
+
 ## Most Important Documentation Links read/used:
 * https://www.npmjs.com/package/balena-cli
 * https://github.com/balena-io/balena-cli/blob/master/INSTALL-LINUX.md
