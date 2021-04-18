@@ -7,6 +7,7 @@ To execute all docker run the following command in the main directory:
 ```sh
 docker-compose up
 ```
+![alt structure](https://github.com/FAngelo94/balena-nodejs/blob/master/image_app.png)
 
 ## Scope of application
 
@@ -27,6 +28,8 @@ Basic docker image where we have inside our db
 ### phpmyadmin/phpmyadmin
 
 Basic docker image with inside phpmyadmin. We can use the phpmyadmin dashboard to interact with the mysql db
+
+![alt structure](https://github.com/FAngelo94/balena-nodejs/blob/master/structure_app.png)
 
 ## Most Important Documentation Links read/used:
 * https://www.npmjs.com/package/balena-cli
