@@ -38,8 +38,11 @@ User can login to balena, then he can ask the list of application added in balen
 ## Most Important Documentation Links read/used:
 * https://www.npmjs.com/package/balena-cli
 * https://github.com/balena-io/balena-cli/blob/master/INSTALL-LINUX.md
-* https://github.com/balena-io/balena-cli/blob/master/INSTALL-ADVANCED.md#npm-installation 
+* https://github.com/balena-io/alena-cli/blob/master/INSTALL-ADVANCED.md#npm-installation 
 * https://hub.docker.com/r/samibourouis/balena-cli
 * https://hub.docker.com/r/balenalib/bananapi-m1-plus-alpine-node
 * https://codeshack.io/basic-login-system-nodejs-express-mysql/
 * https://www.scalyr.com/blog/create-docker-image/
+
+## Notes and Bugs
+* First time docker compose is run you must wait that the db is inizialized or if you open immediately the home of application it isn't able to connect to the db
